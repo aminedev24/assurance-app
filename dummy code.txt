@@ -25,13 +25,26 @@ inputs.forEach((input)=>{
 })
 }
 
+get the data of each row and the text of the data when clicked
+
 for(i = 1;i<table.rows.length;i++){
   table.rows[i].onclick = (e)=>{
     let currentRow = e.currentTarget;
     console.log(currentRow)
+    for(i = 0; i < currentRow.childElementCount;i++){
+      rowCells = currentRow.childNodes;
+   
+    }
+       rowCells.forEach((cell)=>{
+        console.log(cell.innerText);
+      });
   }
 }
 
+var editInputs = ['editDate','editClient','editPnum','editPlate','editPrice','editCredit','editNote']
 
-
+for(i = 0; i < editInputs.length; i++){
+  var y = document.getElementById(editInputs[i])
+  console.log(y)
+}
 

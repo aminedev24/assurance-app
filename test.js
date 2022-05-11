@@ -12,8 +12,9 @@ editBtn.onclick = (e)=>{
 
 
 var table = document.getElementById("table"),rIndex;
+
  
-*/* */
+/* 
 for(var i = 1; i < table.rows.length; i++){
     table.rows[i].onclick = function(){
         rIndex = this.rowIndex;
@@ -44,7 +45,7 @@ function editRow(){
 function editTableDisplay(){
     document.querySelector('.editTable').setAttribute('style', 'display: block;')
 }
-
+*/
 
 
 //createCells 
