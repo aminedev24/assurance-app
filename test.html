@@ -56,62 +56,66 @@
 </div>
 
 
-<div class="container" id="editTable">
+<div class="container-sm" id="editTable">
   <form>
-    <div class="form-row">
+    <button id="editBtn" onclick="editRow();" type="submit" class="btn btn-primary">Update</button>
+    <div class="input-container container-sm">
+      <div class="form-row">
 
-      <div class="form-group col-md-2">
-        <label for="date">date:</label>
-        <input type="date" class="form-control" id="date">
-      </div>
-
-      <div class="form-group col-md-2">
-        <label for="client">client:</label>
-        <input type="text" class="form-control" id="client">
-      </div>
-      
-    </div>
-   
-    <div class="form-row">
-
-      <div class="form-group col-md-2">
-        <label for="pNum">police:</label>
-        <input type="text" class="form-control" id="pNum">
-      </div>
-
-      <div class="form-group col-md-2">
-        <label for="plate">plate:</label>
-        <input type="number" class="form-control" id="plate">
-      </div>
-
-     
-      
-    </div>
-
-    <div class="form-row">
-
-      <div class="form-group col-md-2">
-        <label for="price">price:</label>
-        <input type="number" class="form-control" id="price">
-      </div>
-      
-      <div class="form-group col-md-2">
-        <label for="credit">credit:</label>
-        <input type="number" class="form-control" id="credit">
+        <div class="form-group col-md-2">
+          <label for="date">date:</label>
+          <input type="date" class="form-control" id="date">
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="client">client:</label>
+          <input type="text" class="form-control" id="client">
+        </div>
+        
       </div>
      
+      <div class="form-row">
+  
+        <div class="form-group col-md-2">
+          <label for="pNum">police:</label>
+          <input type="text" class="form-control" id="pNum">
+        </div>
+  
+        <div class="form-group col-md-2">
+          <label for="plate">plate:</label>
+          <input type="number" class="form-control" id="plate">
+        </div>
+  
+       
+        
+      </div>
+  
+      <div class="form-row">
+  
+        <div class="form-group col-md-2">
+          <label for="price">price:</label>
+          <input type="number" class="form-control" id="price">
+        </div>
+        
+        <div class="form-group col-md-2">
+          <label for="credit">credit:</label>
+          <input type="number" class="form-control" id="credit">
+        </div>
+       
+        
+      </div>
+  
       
+     
+      <label for="note">Note:</label>
+                  <div class="form-floating">
+                     
+                      <textarea class="form-control-sm" placeholder="note" id="note"></textarea>
+                  </div>
     </div>
-
     
-   
-    <label for="note">Note:</label>
-                <div class="form-floating">
-                   
-                    <textarea class="form-control-sm" placeholder="note" id="note"></textarea>
-                </div>
                 
-                <button onclick="editRow();" type="submit" class="btn btn-primary">Update</button>
+               
     </div>
 
    

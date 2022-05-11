@@ -20,8 +20,21 @@
     margin-left: 10pc;
 }
 
-@media screen and (min-width: 1200px) {
+#editTable form {
+    display: grid;
+    place-items: center;
+
+}
+
+.input-container {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+@media screen and (min-width: 720px) {
     #editTable {
-        max-width: 30%;
+        max-width: 37%;
     }
 }

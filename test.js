@@ -1,5 +1,9 @@
+let editBtn = document.getElementById('editBtn'),
+inputContainer = document.querySelector('.input-container');
 
-
+editBtn.onclick = ()=>{
+    
+}
 
 
 var table = document.getElementById("table"),rIndex;
