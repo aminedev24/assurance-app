@@ -25,6 +25,13 @@ inputs.forEach((input)=>{
 })
 }
 
+for(i = 1;i<table.rows.length;i++){
+  table.rows[i].onclick = (e)=>{
+    let currentRow = e.currentTarget;
+    console.log(currentRow)
+  }
+}
+
 
 
 

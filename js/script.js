@@ -58,7 +58,10 @@ function addClient(){
       var e = new Date(date.value);
       var j = new Date(date.value)
 
-      var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
+     
+      //var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
+      var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
+      
       endDateCell.innerText = x.toDateString();
       datCell.innerText = e.toDateString();
       
@@ -66,19 +69,19 @@ function addClient(){
       noteCell.innerText = note.value;
       plateCell.innerText = plate.value;
       policeCell.innerText = pNum.value;
-      creditCell.innerText = credit.value;
+      creditCell.innerText = price.value - credit.value;
       priceCell.innerText = price.value;
       
-      creditCell.innerText = credit.value;
+     
   
   tr2.append(datCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
   tbody.append(tr2);
 
-  
+  /*  
   [clientName,date,pNum,note,plate,credit,duration,price].forEach((input)=>{
     input.value = '';
   });
-  
+  */
     }
     /*
 
