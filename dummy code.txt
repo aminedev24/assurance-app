@@ -1,0 +1,30 @@
+
+//createCells 
+
+
+
+function getInputs(){
+
+
+var inputs = ['date','clientName','pNum','plate','duration','price','credit','note']
+
+inputs.forEach((input)=>{
+ var vals =   document.getElementById(input).value
+ console.log(vals)
+ if(vals != ''){
+    function createCells(){
+  let tr2 = document.createElement('TR');
+  for(i =0;i< 8;i++){
+  var newCell = document.createElement('TD');
+  newCell.innerText = vals;
+  tbody.append(tr2);
+  tr2.append(newCell);
+  }
+}
+ }
+})
+}
+
+
+
+

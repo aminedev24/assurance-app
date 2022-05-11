@@ -1,0 +1,39 @@
+.form {
+    background-color:cornsilk;
+    width:91%;
+    max-width:1008px;
+  
+}
+
+.form-inline label {
+    margin-right: 10px;
+}
+
+.form-inline {
+    justify-content: center;
+}
+
+.table-striped tbody tr:nth-of-type(n) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-sm th {
+    font-size:small;
+}
+
+.form-control-sm {
+    margin-top: 10px;
+}
+
+#add {
+    margin: 10px;
+}
+
+
+
+
+
+#note {
+    vertical-align: unset;
+
+}

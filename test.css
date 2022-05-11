@@ -1,0 +1,27 @@
+#editTable{
+	display: flex;
+	padding-top: 20px;
+	margin: 0 auto;
+    justify-content: center;
+    background-color: #ad9a9a;
+
+}
+
+@media screen and (min-width: 768px){
+    .col-md-2 {
+        -ms-flex: 0 0 16.666667%;
+        flex: 1 0 16.666667% !important;
+        max-width: 44.666667%;
+    }
+
+}
+
+#btn {
+    margin-left: 10pc;
+}
+
+@media screen and (min-width: 1200px) {
+    #editTable {
+        max-width: 30%;
+    }
+}
