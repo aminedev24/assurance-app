@@ -1,8 +1,13 @@
 let editBtn = document.getElementById('editBtn'),
-inputContainer = document.querySelector('.input-container');
+inputContainer = document.querySelector('.input-container'),
+editTable = document.getElementById('editTable');
 
-editBtn.onclick = ()=>{
+editBtn.onclick = (e)=>{
     
+  inputContainer.classList.toggle('block');
+  editTable.classList.toggle('bg')
+  e.preventDefault()
+
 }
 
 

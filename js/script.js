@@ -11,6 +11,18 @@ tbody = document.getElementById('tbody'),
 container = document.querySelector('.table-responsive'),
 btn = document.getElementById('add');
 
+let editBtn = document.getElementById('editBtn'),
+inputContainer = document.querySelector('.input-container'),
+editTable = document.getElementById('editTable');
+
+editBtn.onclick = (e)=>{
+    
+  inputContainer.classList.toggle('block');
+  editTable.classList.toggle('bg')
+  e.preventDefault()
+
+}
+
 btn.addEventListener('click',addClient,false);
 
 [clientName,duration,date,pNum,plate,credit].forEach((input)=>{
