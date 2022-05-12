@@ -61,7 +61,7 @@ function addClient(){
     
     endDateCell.setAttribute('id','endDate');
 
-  if(clientName.value && duration.value && price.value && date.value && pNum.value && note.value && plate.value && credit.value){
+  if(clientName.value && duration.value && price.value && date.value && pNum.value && note.value && plate.value){
      
     cName.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
 
@@ -70,21 +70,29 @@ function addClient(){
       var e = new Date(date.value);
       var j = new Date(date.value)
 
-     
+      
       //var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
       var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
       
       endDateCell.innerText = x.toDateString();
       datCell.innerText = e.toDateString();
       
+      let diff = x.getTime() - e.getTime();
+      let msInDay = 1000 * 3600 * 24;
+
+      console.log(diff/msInDay)
+
       policeCell.innerText = pNum.value;
       noteCell.innerText = note.value;
       plateCell.innerText = plate.value;
       policeCell.innerText = pNum.value;
-      creditCell.innerText = price.value - credit.value;
       priceCell.innerText = price.value;
       
-     
+      if(credit.value){
+        creditCell.innerText = price.value - credit.value;
+      }else{
+        creditCell.innerText  = 0;
+      }
   
   tr2.append(datCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
   tbody.append(tr2);

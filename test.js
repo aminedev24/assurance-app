@@ -27,19 +27,22 @@ editBtn.onclick = (e)=>{
 }
 
 function editRows(){
+    for(i=0; i > table.rows.length;i++){
 
+    }
 }
 
 function findInputId(){
+ let obj = {'editClient':'client'}
     for(i = 0;i< editInputs.length;i++){
-        var y = document.getElementById(editInputs[i])
+        y = document.getElementById(editInputs[i])
       y.onfocus = (e)=>{
         console.log(e.currentTarget.id)
       }
     }
 }
 
-table.addEventListener('click',getRows)
+//table.addEventListener('click',getRows)
 
 /*
 function getRows (rowCells){
@@ -59,16 +62,19 @@ function getRows (rowCells){
 
 */
 
-/*
+
 //get each row when clicked on
-for(i = 1;i<table.rows.length;i++){
+window.onload = tableData();
+
+function tableData(){
+  for(i = 1;i<table.rows.length;i++){
     table.rows[i].onclick = (e)=>{
       let currentRow = e.currentTarget;
       console.log(currentRow)
       //get each cell value
       for(i = 0; i < currentRow.childElementCount;i++){
         rowCells = currentRow.children;
-
+        
      
       }
       //set the edit inputs values from the cells
@@ -76,13 +82,15 @@ for(i = 1;i<table.rows.length;i++){
           for(i = 1; i < editInputs.length; i++){
             var y = document.getElementById(editInputs[i])
             y.value = rowCells[i].innerText
-          
+           
   }
   
         }
     }
   }
-*/
+}
+
+
 
 
 

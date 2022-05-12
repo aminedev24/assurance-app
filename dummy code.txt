@@ -30,6 +30,7 @@ get the data of each row and the text of the data when clicked
 
 let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
 
+
 function EditRows(){
   for(i = 0;i< editInputs.length;i++){
     var y = document.getElementById(editInputs[i])
