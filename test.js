@@ -2,6 +2,11 @@ let editBtn = document.getElementById('editBtn'),
 inputContainer = document.querySelector('.input-container'),
 editTable = document.getElementById('editTable');
 
+var table = document.getElementById("table"),rIndex;
+
+let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
+
+
 editBtn.onclick = (e)=>{
   
   inputContainer.classList.toggle('block');
@@ -11,6 +16,7 @@ editBtn.onclick = (e)=>{
   switch (e.currentTarget.innerText){
         case 'Edit':
             e.currentTarget.innerText = 'Update'
+            findInputId();
             break;
         default:
             e.currentTarget.innerText = 'Edit'
@@ -21,10 +27,63 @@ editBtn.onclick = (e)=>{
 }
 
 function editRows(){
-    console.log('edit rows initiated')
+
 }
 
-var table = document.getElementById("table"),rIndex;
+function findInputId(){
+    for(i = 0;i< editInputs.length;i++){
+        var y = document.getElementById(editInputs[i])
+      y.onfocus = (e)=>{
+        console.log(e.currentTarget.id)
+      }
+    }
+}
+
+table.addEventListener('click',getRows)
+
+/*
+function getRows (rowCells){
+    for(i = 1;i<table.rows.length;i++){
+        table.rows[i].onclick = (e)=>{
+          let currentRow = e.currentTarget;
+          console.log(currentRow)
+          //get each cell value
+          for(i = 0; i < currentRow.childElementCount;i++){
+            rowCells = currentRow.children;
+    
+         
+          }}}
+         
+
+}
+
+*/
+
+/*
+//get each row when clicked on
+for(i = 1;i<table.rows.length;i++){
+    table.rows[i].onclick = (e)=>{
+      let currentRow = e.currentTarget;
+      console.log(currentRow)
+      //get each cell value
+      for(i = 0; i < currentRow.childElementCount;i++){
+        rowCells = currentRow.children;
+
+     
+      }
+      //set the edit inputs values from the cells
+        for(i = 0; i < rowCells.length; i++){
+          for(i = 1; i < editInputs.length; i++){
+            var y = document.getElementById(editInputs[i])
+            y.value = rowCells[i].innerText
+          
+  }
+  
+        }
+    }
+  }
+*/
+
 
 
 
