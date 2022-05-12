@@ -33,6 +33,17 @@ btn.addEventListener('click',addClient,false);
     }
 })
 
+
+function getRemainingDays(trow){
+  //var trow = document.querySelector('.trow')
+  date1 = new Date(trow.childNodes[0])
+  date2 = new Date(trow.childNodes[4])
+  let diff = date2.getTime() - date1.getTime();
+  let msInDay = 1000 * 3600 * 24;
+
+  console.log(diff/msInDay)
+}
+
 function addClient(){
 
 
@@ -48,7 +59,7 @@ function addClient(){
 
 
     let tr2 = document.createElement('TR');
-
+    tr2.setAttribute('class','trow')
 
     datCell.setAttribute('id','datCell');
     cName.setAttribute('id','cName');
@@ -76,11 +87,7 @@ function addClient(){
       
       endDateCell.innerText = x.toDateString();
       datCell.innerText = e.toDateString();
-      
-      let diff = x.getTime() - e.getTime();
-      let msInDay = 1000 * 3600 * 24;
-
-      console.log(diff/msInDay)
+    
 
       policeCell.innerText = pNum.value;
       noteCell.innerText = note.value;
@@ -96,6 +103,8 @@ function addClient(){
   
   tr2.append(datCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
   tbody.append(tr2);
+  var trow = document.querySelector('.trow')
+  getRemainingDays(trow)
 
   /*  
   [clientName,date,pNum,note,plate,credit,duration,price].forEach((input)=>{
