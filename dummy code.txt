@@ -28,21 +28,30 @@ inputs.forEach((input)=>{
 get the data of each row and the text of the data when clicked
 
 
-let editInputs = ['editDate','editClient','editPnum','editPlate','editPrice','editCredit','editNote']
+let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
 
+function EditRows(){
+  
+}
 
+//get each row when clicked on
 for(i = 1;i<table.rows.length;i++){
   table.rows[i].onclick = (e)=>{
     let currentRow = e.currentTarget;
     console.log(currentRow)
+    //get each cell value
     for(i = 0; i < currentRow.childElementCount;i++){
       rowCells = currentRow.children;
    
     }
+    //set the edit inputs values from the cells
       for(i = 0; i < rowCells.length; i++){
         for(i = 1; i < editInputs.length; i++){
           var y = document.getElementById(editInputs[i])
           y.value = rowCells[i].innerText
+          y.oninput = (e)=>{
+            console.log(e.currentTarget)
+          }
 }
 
       }
@@ -55,3 +64,10 @@ for(i = 1; i < editInputs.length; i++){
   console.log(y)
 }
 
+
+for(i = 0;i< editInputs.length;i++){
+    var y = document.getElementById(editInputs[i])
+  y.oninput = (e)=>{
+    console.log(e.currentTarget)
+  }
+}

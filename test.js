@@ -3,49 +3,29 @@ inputContainer = document.querySelector('.input-container'),
 editTable = document.getElementById('editTable');
 
 editBtn.onclick = (e)=>{
-    
+  
   inputContainer.classList.toggle('block');
   editTable.classList.toggle('bg')
   e.preventDefault()
 
+  switch (e.currentTarget.innerText){
+        case 'Edit':
+            e.currentTarget.innerText = 'Update'
+            break;
+        default:
+            e.currentTarget.innerText = 'Edit'
+            editRows();
+            break;
+  }
+
 }
 
+function editRows(){
+    console.log('edit rows initiated')
+}
 
 var table = document.getElementById("table"),rIndex;
 
- 
-/* 
-for(var i = 1; i < table.rows.length; i++){
-    table.rows[i].onclick = function(){
-        rIndex = this.rowIndex;
-        console.log(rIndex);
-
-        //document.getElementById("date").value = this.cells[1].innerHTML;
-        document.getElementById("client").value = this.cells[1].innerHTML;
-        document.getElementById("pNum").value = this.cells[2].innerHTML;
-        document.getElementById("plate").value = this.cells[3].innerHTML;
-        document.getElementById("price").value = this.cells[5].innerHTML;
-        document.getElementById("credit").value = this.cells[6].innerHTML;
-        document.getElementById("note").value = this.cells[7].innerHTML;
-    };
-}
-            
-            
-// edit the row
-function editRow(){
-   // table.rows[rIndex].cells[1].innerHTML = document.querySelector(".date").value;
-    table.rows[rIndex].cells[1].innerHTML = document.getElementById("client").value;
-    table.rows[rIndex].cells[2].innerHTML = document.getElementById("police").value;
-    table.rows[rIndex].cells[3].innerHTML = document.getElementById("plate").value;
-    table.rows[rIndex].cells[6].innerHTML = document.getElementById("credit").value;
-    table.rows[rIndex].cells[7].innerHTML = document.getElementById("note").value;
-}
-
-// Data Update Table Here
-function editTableDisplay(){
-    document.querySelector('.editTable').setAttribute('style', 'display: block;')
-}
-*/
 
 
 //createCells 
@@ -76,7 +56,8 @@ function getInputs(){
     })
     }
     
-    
+
+
     
     
     
