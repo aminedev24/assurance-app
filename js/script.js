@@ -34,16 +34,57 @@ btn.addEventListener('click',addClient,false);
 })
 
 
-function getRemainingDays(trow){
+function getRemainingDays(trow,e,j){
   //var trow = document.querySelector('.trow')
-  date1 = new Date(trow.childNodes[0])
-  date2 = new Date(trow.childNodes[4])
-  let diff = date2.getTime() - date1.getTime();
+  //date1 = new Date(trow.childNodes[0])
+  //date2 = new Date(trow.childNodes[4])
+  let diff = j.getTime() - e.getTime(); //date2.getTime() - date1.getTime();
   let msInDay = 1000 * 3600 * 24;
-
+  if(diff/msInDay <= 10){
+    alert('remaining days are: '+ diff/msInDay +' days');
+  }
   console.log(diff/msInDay)
 }
+//let tr2 = document.createElement('TR');
 
+/*
+function createCells(vals){
+ 
+  for(i =0;i< 7;i++){
+  var newCell = document.createElement('TD');
+  newCell.innerText = vals;
+  
+  
+ 
+  }
+  tr2.append(newCell);
+  tbody.append(tr2);
+/*
+  if(tr2.childElementCount >6){
+    let tr3 = document.createElement('tr')
+    tr3.append(newCell)
+    tbody.append(tr3)
+
+    alert('woah')
+  }else {}
+  }
+  */
+
+/*
+function getInputs(){
+
+
+  var inputs = ['date','clientName','pNum','plate','duration','price','credit','note']
+  
+  inputs.forEach((input)=>{
+   var vals =   document.getElementById(input).value
+   console.log(vals)
+   if(vals != ''){
+      createCells(vals);
+   }
+  })
+  }
+*/
 function addClient(){
 
 
@@ -72,11 +113,12 @@ function addClient(){
     
     endDateCell.setAttribute('id','endDate');
 
+//getInputs()
   if(clientName.value && duration.value && price.value && date.value && pNum.value && note.value && plate.value){
      
     cName.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
 
-      dur.innerText = duration.value + ' days';
+      //dur.innerText = duration.value + ' days';
       
       var e = new Date(date.value);
       var j = new Date(date.value)
@@ -85,10 +127,10 @@ function addClient(){
       //var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
       var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
       
-      endDateCell.innerText = x.toDateString();
-      datCell.innerText = e.toDateString();
+     endDateCell.innerText = x.toDateString();
+     datCell.innerText = e.toDateString();
     
-
+    
       policeCell.innerText = pNum.value;
       noteCell.innerText = note.value;
       plateCell.innerText = plate.value;
@@ -104,8 +146,9 @@ function addClient(){
   tr2.append(datCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
   tbody.append(tr2);
   var trow = document.querySelector('.trow')
-  getRemainingDays(trow)
-
+  
+  getRemainingDays(trow,e,j)
+ 
   /*  
   [clientName,date,pNum,note,plate,credit,duration,price].forEach((input)=>{
     input.value = '';

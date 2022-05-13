@@ -99,13 +99,16 @@ function tableData(){
 
 function createCells(vals){
     let tr2 = document.createElement('TR');
+   // let tr3 = document.getElementById('tr3')
     for(i =0;i< 8;i++){
     var newCell = document.createElement('TD');
     newCell.innerText = vals;
-    tr2.append(newCell);
-    tbody.append(tr2);
+    
    
     }
+
+    tr2.append(newCell);
+    tbody.append(tr2);
   }
 
 
