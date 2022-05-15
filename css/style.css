@@ -83,3 +83,12 @@
         max-width: 50%;
     }
 }
+
+
+.editBtn{
+	padding: .10rem .4rem;
+	font-size: 0.543rem;
+	line-height: 1.5;
+	border-radius: .2rem;
+	font-weight: bold;
+}

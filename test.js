@@ -4,7 +4,27 @@ editTable = document.getElementById('editTable');
 
 var table = document.getElementById("table"),rIndex;
 
-let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
+//let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
+
+
+
+
+for(i =1;i <7;i++){
+
+
+  btn = document.createElement('button')
+ 
+  //btns[i].innerText = 'Edit';
+  //btns.setAttribute('class','btn-sm btn-primary editBtn')
+  
+  cells = document.getElementsByTagName('td')
+  console.log(new Array(cells))
+ 
+}
+
+
+
+
 
 
 editBtn.onclick = (e)=>{
