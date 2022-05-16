@@ -43,7 +43,7 @@ function getRemainingDays(trow,e,j){
   if(diff/msInDay <= 10){
     alert('remaining days are: '+ diff/msInDay +' days');
   }
-  console.log(diff/msInDay)
+  //console.log(diff/msInDay)
 }
 //let tr2 = document.createElement('TR');
 
@@ -128,8 +128,9 @@ function addClient(){
       var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
       
      endDateCell.innerText = x.toDateString();
-     datCell.innerText = e.toDateString();
+     datCell.innerText = (e.getMonth()+1)  +'/'+ e.getDate()+ '/'+ e.getFullYear()///.toDateString();
     
+     
     
       policeCell.innerText = pNum.value;
       noteCell.innerText = note.value;
