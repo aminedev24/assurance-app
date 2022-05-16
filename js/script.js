@@ -123,7 +123,7 @@ function addClient(){
       var e = new Date(date.value);
       var j = new Date(date.value)
 
-      
+     
       //var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
       var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
       

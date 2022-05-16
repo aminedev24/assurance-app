@@ -33,11 +33,15 @@ function editRows(){
 }
 
 function findInputId(){
- let obj = {'editClient':'client'}
+ let obj = {}
     for(i = 0;i< editInputs.length;i++){
         y = document.getElementById(editInputs[i])
       y.onfocus = (e)=>{
-        console.log(e.currentTarget.id)
+        var currentInput = e.currentTarget
+        obj.cname = document.querySelector('.client').className;
+        console.log(obj.cname)
+        console.log(currentInput.id.match('Client').pop())
+        
       }
     }
 }

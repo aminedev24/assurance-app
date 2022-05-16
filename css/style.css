@@ -1,5 +1,5 @@
 .form {
-    background-color:cornsilk;
+    background-color:#ecd269;
    
     max-width:1008px;
   
@@ -13,8 +13,10 @@
     justify-content: center;
 }
 
-.table-striped tbody tr:nth-of-type(n) {
-    background-color: rgba(0, 0, 0, 0.05);
+
+
+.table .thead-dark th {
+    background-color: #3a628a;
 }
 
 .table-sm th {
