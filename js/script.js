@@ -11,6 +11,7 @@ tbody = document.getElementById('tbody'),
 container = document.querySelector('.table-responsive'),
 btn = document.getElementById('add');
 
+/*
 let editBtn = document.getElementById('editBtn'),
 inputContainer = document.querySelector('.input-container'),
 editTable = document.getElementById('editTable');
@@ -22,7 +23,7 @@ editBtn.onclick = (e)=>{
   e.preventDefault()
 
 }
-
+*/
 btn.addEventListener('click',addClient,false);
 
 [clientName,duration,date,pNum,plate,credit].forEach((input)=>{
@@ -34,16 +35,17 @@ btn.addEventListener('click',addClient,false);
 })
 
 
-function getRemainingDays(trow,e,j){
+function getRemainingDays(trow,dateCell,endDateCell){
   //var trow = document.querySelector('.trow')
-  //date1 = new Date(trow.childNodes[0])
-  //date2 = new Date(trow.childNodes[4])
-  let diff = j.getTime() - e.getTime(); //date2.getTime() - date1.getTime();
+  date1 = new Date(endDateCell.textContent);
+  date2 = new Date(dateCell.textContent);
+  
+  let diff = date1 - date2//j.getTime() - e.getTime(); //date2.getTime() - date1.getTime();
   let msInDay = 1000 * 3600 * 24;
   if(diff/msInDay <= 10){
     alert('remaining days are: '+ diff/msInDay +' days');
   }
-  //console.log(diff/msInDay)
+  console.log(diff/msInDay)
 }
 //let tr2 = document.createElement('TR');
 
@@ -85,12 +87,61 @@ function getInputs(){
   })
   }
 */
+
+function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
+        //edit cells function
+        let btn  = document.createElement('button')
+        btn.innerText = 'Edit';
+        let editInupt = document.createElement('input');
+        editInupt.setAttribute('class','form-control form-control-sm editInput');
+        btn.setAttribute('class','btn-sm btn btn-primary editBtn');
+        editInupt.setAttribute('type', 'text');
+       [dateCell,cName,policeCell,plateCell,priceCell,noteCell].forEach((cell)=>{
+         cell.onmouseover = (e)=>{
+           e.currentTarget.appendChild(btn)
+           
+         }
+  
+         cell.onmouseleave = (e)=>{
+          e.currentTarget.children[0].remove();
+         }
+  
+         
+       })
+      
+       btn.onclick = (e)=>{
+       // console.log(e.currentTarget.parentElement.tagName)
+        //console.log(e.currentTarget.parentNode)
+        e.currentTarget.parentNode.appendChild(editInupt)
+        btn.innerText = 'Update';
+        editInupt.value = e.currentTarget.parentNode.childNodes[0].textContent;
+       }
+  
+       editInupt.onkeyup = (e)=>{
+         //console.log(e.currentTarget.parentNode.childNodes[0].textContent)
+         
+         if(e.keyCode ==13){
+          e.currentTarget.parentNode.childNodes[0].textContent = e.currentTarget.value;
+          btn.innerText ='Edit';
+         }
+       }
+}
+
+
+function saveTable(){
+  localStorage.setItem('data',table.firstElementChild.nextElementSibling.outerHTML);
+  localStorage.setItem('data',table.outerHTML);
+
+ //console.log(table.firstElementChild.nextElementSibling.outerHTML)
+}
+
+
 function addClient(){
-
-
+     
+    
     let cName = document.createElement('TD');
     let dur = document.createElement('TD');
-    let datCell = document.createElement('TD');
+    let dateCell = document.createElement('TD');
     let endDateCell = document.createElement('TD');
     let plateCell = document.createElement('TD');
     let policeCell = document.createElement('TD');
@@ -98,11 +149,20 @@ function addClient(){
     let priceCell = document.createElement('TD');
     let noteCell = document.createElement('TD');
 
-
-    let tr2 = document.createElement('TR');
+    let tr2 = document.createElement('TR'),
+    tr3 = document.createElement('tr');
     tr2.setAttribute('class','trow')
+    tr3.setAttribute('class', 'btnsRow')
 
-    datCell.setAttribute('id','datCell');
+    saveBtn = document.createElement('button')
+    saveBtn.innerText = 'save'
+    saveBtn.setAttribute('class', 'btn btn-primary btn-sm saveBtn')
+    
+    saveBtn.addEventListener('click', saveTable)
+
+   tr3.append(saveBtn)
+    
+    dateCell.setAttribute('id','dateCell');
     cName.setAttribute('id','cName');
     dur.setAttribute('id','durCell');
     plateCell.setAttribute('id','plateCell');
@@ -112,8 +172,11 @@ function addClient(){
     priceCell.setAttribute('id', 'priceCell')
     
     endDateCell.setAttribute('id','endDate');
-
+    
+    
 //getInputs()
+
+
   if(clientName.value && duration.value && price.value && date.value && pNum.value && note.value && plate.value){
      
     cName.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
@@ -127,8 +190,9 @@ function addClient(){
       //var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
       var x = new Date(j.setMonth(j.getMonth() + Number(duration.value))); 
       
+     //endDateCell.innerText = x.toDateString();
      endDateCell.innerText = x.toDateString();
-     datCell.innerText = (e.getMonth()+1)  +'/'+ e.getDate()+ '/'+ e.getFullYear()///.toDateString();
+     dateCell.innerText = (e.getMonth()+1)  +'/'+ e.getDate()+ '/'+ e.getFullYear()///.toDateString();
     
      
     
@@ -143,12 +207,20 @@ function addClient(){
       }else{
         creditCell.innerText  = 0;
       }
-  
-  tr2.append(datCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
-  tbody.append(tr2);
+
+
+
+  tr2.append(dateCell,cName,policeCell,plateCell,endDateCell,priceCell,creditCell,noteCell);
+  tbody.append(tr2,tr3);
   var trow = document.querySelector('.trow')
-  
-  getRemainingDays(trow,e,j)
+  btnsRow = document.querySelectorAll('.btnsRow')
+
+  if(btnsRow.length >1){
+    btnsRow[0].remove();
+  }
+
+  editCell(dateCell,cName,policeCell,plateCell,priceCell,noteCell)
+  getRemainingDays(trow,dateCell,endDateCell)
  
   /*  
   [clientName,date,pNum,note,plate,credit,duration,price].forEach((input)=>{
@@ -204,4 +276,5 @@ function addClient(){
 */
  
 } 
+
 

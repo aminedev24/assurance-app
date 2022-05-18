@@ -86,11 +86,13 @@
 
 
 .editBtn{
-	padding: .10rem .4rem;
-	font-size: 0.543rem;
+	padding: .13rem .8rem;
+	font-size: 0.65rem;
 	line-height: 1.5;
 	border-radius: .2rem;
 	font-weight: bold;
+    display: block;
+    margin: auto;
 }
 
 .table-striped tbody tr:nth-of-type(1n+1) {
@@ -99,4 +101,11 @@
 
 .trow {
     text-align: center;
+}
+
+.editInput .saveBtn {
+   height: calc(1.3em + .2rem + 2px);
+   display: block;
+   margin: auto;
+   width: 40%;
 }

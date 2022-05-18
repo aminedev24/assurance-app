@@ -1,27 +1,35 @@
+/*
 let editBtn = document.getElementById('editBtn'),
 inputContainer = document.querySelector('.input-container'),
 editTable = document.getElementById('editTable');
-
+*/
 var table = document.getElementById("table"),rIndex;
 
 //let editInputs = ['editDate','editClient','editPnum','editPlate','editExp','editPrice','editCredit','editNote']
 
+let editArr = []
 
+rows = document.querySelectorAll('.trow');
 
-
-for(i =1;i <7;i++){
-
-
-  btn = document.createElement('button')
+/*
+for(j =0; j< rows.length; j++){
+  //editArr.push(Object.values(rows[j].children))
+ //console.log(Object.values(rows[j].children))
  
-  //btns[i].innerText = 'Edit';
-  //btns.setAttribute('class','btn-sm btn-primary editBtn')
+  arr = Object.values(rows[j].children)
   
-  cells = document.getElementsByTagName('td')
-  console.log(new Array(cells))
- 
+  //console.log(editBtns)
 }
 
+for(k = 0;k < arr.length; k++){
+  editBtns= document.createElement('button');
+  editBtns.innerText = 'Edit'
+  for(h = 0;h<arr.length;h++){
+    arr[h].append(editBtns)
+  }
+}
+
+*/
 
 
 
@@ -149,9 +157,11 @@ function getInputs(){
      }
     })
     }
-    
+
+
+var table = "<table><thead><tr>Date<th>Client</th><th>Police</th></tr></thead><tbody><td>15 sep</td>john<td>775jf</td></tbody> </table"    
 
 
     
-    
+document.body.innerHTML+= table;
     
