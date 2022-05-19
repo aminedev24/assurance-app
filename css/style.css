@@ -109,3 +109,12 @@
    margin: auto;
    width: 40%;
 }
+
+.btnsRow {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.btnsRow button {
+    margin: .320rem;
+}

@@ -11,19 +11,7 @@ tbody = document.getElementById('tbody'),
 container = document.querySelector('.table-responsive'),
 btn = document.getElementById('add');
 
-/*
-let editBtn = document.getElementById('editBtn'),
-inputContainer = document.querySelector('.input-container'),
-editTable = document.getElementById('editTable');
 
-editBtn.onclick = (e)=>{
-    
-  inputContainer.classList.toggle('block');
-  editTable.classList.toggle('bg')
-  e.preventDefault()
-
-}
-*/
 btn.addEventListener('click',addClient,false);
 
 [clientName,duration,date,pNum,plate,credit].forEach((input)=>{
@@ -47,46 +35,47 @@ function getRemainingDays(trow,dateCell,endDateCell){
   }
   console.log(diff/msInDay)
 }
-//let tr2 = document.createElement('TR');
 
-/*
-function createCells(vals){
- 
-  for(i =0;i< 7;i++){
-  var newCell = document.createElement('TD');
-  newCell.innerText = vals;
+
+var tableToExcel = (function(fileName = '') {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+  return function(table, name) {
+    
+    if (!table.nodeType) table = document.getElementById('table')
+    
+    let button = document.getElementById('total');
+    let saveBtn = document.getElementById('saveTable');
+    var th = document.querySelectorAll('th');
+   
+    if(button != null){
+        button.remove();
+        saveBtn.remove();
+    }
+
+    th.forEach((trow)=>{
+        trow.style.backgroundColor =  '#a7acac';
+        
+        
+      })
+
+    var tdth = document.querySelectorAll('TD ,TH')
+
+    tdth.forEach((elems)=>{
+        elems.style.borderColor = '#000000'
+    })
+
   
-  
- 
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+    var link = document.createElement('a');
+    var fileName = link.download = 'fname.xls';
+    link.href  = uri + base64(format(template, ctx));
+    link.click()
+    //window.location.href = uri + base64(format(template, ctx))
   }
-  tr2.append(newCell);
-  tbody.append(tr2);
-/*
-  if(tr2.childElementCount >6){
-    let tr3 = document.createElement('tr')
-    tr3.append(newCell)
-    tbody.append(tr3)
-
-    alert('woah')
-  }else {}
-  }
-  */
-
-/*
-function getInputs(){
-
-
-  var inputs = ['date','clientName','pNum','plate','duration','price','credit','note']
-  
-  inputs.forEach((input)=>{
-   var vals =   document.getElementById(input).value
-   console.log(vals)
-   if(vals != ''){
-      createCells(vals);
-   }
-  })
-  }
-*/
+})()
 
 function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
         //edit cells function
@@ -158,9 +147,14 @@ function addClient(){
     saveBtn.innerText = 'save'
     saveBtn.setAttribute('class', 'btn btn-primary btn-sm saveBtn')
     
-    saveBtn.addEventListener('click', saveTable)
+    exportBtn = document.createElement('button');
+    exportBtn.setAttribute('class','btn btn-primary btn-sm export');
+    exportBtn.innerText = 'export';
 
-   tr3.append(saveBtn)
+    saveBtn.addEventListener('click', saveTable)
+    exportBtn.addEventListener('click', tableToExcel)
+
+   tr3.append(saveBtn,exportBtn)
     
     dateCell.setAttribute('id','dateCell');
     cName.setAttribute('id','cName');
@@ -228,52 +222,7 @@ function addClient(){
   });
   */
     }
-    /*
-
-    var table = "<table id='table table-striped table-bordered table-hover table-sm'";
-    table += "<thead id='thead-dark'<tr><th id='col'>Date</th><th id='col'>Client</th><th id='col'>policeCell</th><th id='col'>Plate</th><th id='col'>Duration</th><th id='col'>creditCell</th><th id='col'>Note</th></tr></thead>";
-    table+= '</table>'
-    container.innerHTML+= table;
-
-    let a = document.createElement('TD');
-    let b = document.createElement('TD');
-    let c = document.createElement('TD');
-    let d = document.createElement('TD');
-    let f = document.createElement('TD');
-    let g = document.createElement('TD');
-    let tr2 = document.createElement('TR');
-    
-    a.setAttribute('id','date');
-    b.setAttribute('id','client');
-    c.setAttribute('id','policeCell');
-    d.setAttribute('id','expiration');
-    f.setAttribute('id','creditCell');
-    f.setAttribute('id','note');
-
-
- if(clientName.value && duration.value && date.value){
-      //var price = duration.value / 30 *1600;
-  	  a.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
-
-      b.innerText = duration.value + ' days';
-      var e = new Date(date.value);
-      var j = new Date(date.value)
-
-      var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
-      f.innerText = x.toDateString();
-      d.innerText = e.toDateString();
-      c.innerText = parseInt(price);
-  
-  tr2.append(a,b,c,d,f);
-  tbody.append(tr2);
-
-  clientName.value = '';
-  date.value = '';
-  duration.value = '';
-  
-}
-
-*/
+   
  
 } 
 

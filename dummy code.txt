@@ -2,6 +2,109 @@
 //createCells 
 
 
+/*
+let editBtn = document.getElementById('editBtn'),
+inputContainer = document.querySelector('.input-container'),
+editTable = document.getElementById('editTable');
+
+editBtn.onclick = (e)=>{
+    
+  inputContainer.classList.toggle('block');
+  editTable.classList.toggle('bg')
+  e.preventDefault()
+
+}
+*/
+
+
+//let tr2 = document.createElement('TR');
+
+/*
+function createCells(vals){
+ 
+  for(i =0;i< 7;i++){
+  var newCell = document.createElement('TD');
+  newCell.innerText = vals;
+  
+  
+ 
+  }
+  tr2.append(newCell);
+  tbody.append(tr2);
+/*
+  if(tr2.childElementCount >6){
+    let tr3 = document.createElement('tr')
+    tr3.append(newCell)
+    tbody.append(tr3)
+
+    alert('woah')
+  }else {}
+  }
+  */
+
+/*
+function getInputs(){
+
+
+  var inputs = ['date','clientName','pNum','plate','duration','price','credit','note']
+  
+  inputs.forEach((input)=>{
+   var vals =   document.getElementById(input).value
+   console.log(vals)
+   if(vals != ''){
+      createCells(vals);
+   }
+  })
+  }
+*/
+
+ /*
+
+    var table = "<table id='table table-striped table-bordered table-hover table-sm'";
+    table += "<thead id='thead-dark'<tr><th id='col'>Date</th><th id='col'>Client</th><th id='col'>policeCell</th><th id='col'>Plate</th><th id='col'>Duration</th><th id='col'>creditCell</th><th id='col'>Note</th></tr></thead>";
+    table+= '</table>'
+    container.innerHTML+= table;
+
+    let a = document.createElement('TD');
+    let b = document.createElement('TD');
+    let c = document.createElement('TD');
+    let d = document.createElement('TD');
+    let f = document.createElement('TD');
+    let g = document.createElement('TD');
+    let tr2 = document.createElement('TR');
+    
+    a.setAttribute('id','date');
+    b.setAttribute('id','client');
+    c.setAttribute('id','policeCell');
+    d.setAttribute('id','expiration');
+    f.setAttribute('id','creditCell');
+    f.setAttribute('id','note');
+
+
+ if(clientName.value && duration.value && date.value){
+      //var price = duration.value / 30 *1600;
+  	  a.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
+
+      b.innerText = duration.value + ' days';
+      var e = new Date(date.value);
+      var j = new Date(date.value)
+
+      var x = new Date(j.setDate(j.getDate() + Number(duration.value)));
+      f.innerText = x.toDateString();
+      d.innerText = e.toDateString();
+      c.innerText = parseInt(price);
+  
+  tr2.append(a,b,c,d,f);
+  tbody.append(tr2);
+
+  clientName.value = '';
+  date.value = '';
+  duration.value = '';
+  
+}
+
+*/
+
 
 function getInputs(){
 
