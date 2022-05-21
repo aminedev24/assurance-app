@@ -6,6 +6,8 @@ window.onload = ()=>{
     }
 }
 */
+
+
 window.onload = ()=>{
     if(localStorage.getItem('data') != null){
        var div = document.getElementById('table')

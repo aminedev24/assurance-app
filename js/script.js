@@ -6,7 +6,7 @@ plate = document.getElementById('plate'),
 credit = document.getElementById('credit'),
 price = document.getElementById('price'),
 note = document.getElementById('note'),
-tbody = document.getElementById('tbody'),
+tbody = document.getElementById('empty-tbody'),
 
 container = document.querySelector('.table-responsive'),
 btn = document.getElementById('add');
@@ -36,6 +36,39 @@ function getRemainingDays(trow,dateCell,endDateCell){
   console.log(diff/msInDay)
 }
 
+const searchInput = document.getElementById("search-input");
+     // const rows = document.querySelectorAll("tbody tr");
+      //console.log(rows);
+searchInput.addEventListener("keyup",SearchTable );
+
+function SearchTable (e) {
+  const rows = document.querySelectorAll(".trow");
+  const q = e.target.value.toLowerCase();
+  console.log(q)
+  
+  rows.forEach((row)=>{
+    console.log(row.childNodes[1].textContent.startsWith(q))
+    if(row.childNodes[1].textContent.startsWith(q)){
+       row.style.display = "table-row"
+       
+    }else{
+      row.style.display = "none";
+    }
+  })
+  
+  /*
+  rows.forEach((row) => {
+    //console.log(row.textContent.toLowerCase())
+    console.log(row.querySelector('td').textContent)
+    /*
+    row.querySelector("td").textContent.toLowerCase().startsWith(q)
+      ? (row.style.display = "table-row")
+      : (row.style.display = "none");
+  })*/;
+}
+
+
+    
 
 var tableToExcel = (function(fileName = '') {
   var uri = 'data:application/vnd.ms-excel;base64,'
@@ -77,7 +110,16 @@ var tableToExcel = (function(fileName = '') {
   }
 })()
 
-function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
+window.onload = ()=>{
+  editCell()
+  if(localStorage.getItem('data') != null){
+     var div = document.querySelector('.table-responsive')
+     div.innerHTML += localStorage.getItem('data');
+  }
+}
+
+function editCell (){
+   
         //edit cells function
         let btn  = document.createElement('button')
         btn.innerText = 'Edit';
@@ -85,6 +127,26 @@ function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
         editInupt.setAttribute('class','form-control form-control-sm editInput');
         btn.setAttribute('class','btn-sm btn btn-primary editBtn');
         editInupt.setAttribute('type', 'text');
+
+        ['dateCell','cName','plateCell','priceCell','policeCell','noteCell'].forEach((cell)=>{
+          cells = document.getElementById(cell)
+          console.log(cells)
+          if(cells !=null){
+            cells.onmouseover = (e)=>{
+              e.currentTarget.appendChild(btn);
+            }
+        
+            
+           cells.onmouseleave = (e)=>{
+            e.currentTarget.children[0].remove();
+           }
+          }
+         
+      
+        })
+
+       
+        /*
        [dateCell,cName,policeCell,plateCell,priceCell,noteCell].forEach((cell)=>{
          cell.onmouseover = (e)=>{
            e.currentTarget.appendChild(btn)
@@ -97,6 +159,7 @@ function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
   
          
        })
+       */
       
        btn.onclick = (e)=>{
        // console.log(e.currentTarget.parentElement.tagName)
@@ -118,7 +181,7 @@ function editCell (dateCell,cName,policeCell,plateCell,priceCell,noteCell){
 
 
 function saveTable(){
-  localStorage.setItem('data',table.firstElementChild.nextElementSibling.outerHTML);
+  //localStorage.setItem('data',table.firstElementChild.nextElementSibling.outerHTML);
   localStorage.setItem('data',table.outerHTML);
 
  //console.log(table.firstElementChild.nextElementSibling.outerHTML)
@@ -173,7 +236,7 @@ function addClient(){
 
   if(clientName.value && duration.value && price.value && date.value && pNum.value && note.value && plate.value){
      
-    cName.innerText = clientName.value.charAt(0).toUpperCase() + clientName.value.slice(1);
+    cName.innerText = clientName.value//.charAt(0).toUpperCase() + clientName.value.slice(1);
 
       //dur.innerText = duration.value + ' days';
       
@@ -213,9 +276,12 @@ function addClient(){
     btnsRow[0].remove();
   }
 
-  editCell(dateCell,cName,policeCell,plateCell,priceCell,noteCell)
+  
+  
+  editCell()
   getRemainingDays(trow,dateCell,endDateCell)
- 
+
+
   /*  
   [clientName,date,pNum,note,plate,credit,duration,price].forEach((input)=>{
     input.value = '';

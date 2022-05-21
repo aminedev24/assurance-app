@@ -118,3 +118,19 @@
 .btnsRow button {
     margin: .320rem;
 }
+
+.search-container {
+    margin: 10px !important;
+}
+
+.search-container input {
+    height: calc(.95em + .80rem + 3px);
+}
+
+.search-container button {
+    padding: .275rem .65rem;
+}
+
+.search-container button:hover {
+   color: #72afe4;
+}
