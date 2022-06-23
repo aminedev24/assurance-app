@@ -129,6 +129,8 @@
 
 .search-container button {
     padding: .275rem .65rem;
+    position: relative;
+    right: 36px;
 }
 
 .search-container button:hover {
