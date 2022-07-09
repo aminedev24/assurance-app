@@ -4,9 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Trust assurance B3171</title>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" type="image/png" sizes="16x16"  href="/img/trust-logo-icon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,37 +38,46 @@
         <div class="container form">
             <div class="form-inline">
                 
-                <label for="date">Date:</label>
+                
                 <div class="input-group mb-2 mr-sm-2">
+                    <label for="date">Date:</label>
                     <input type="Date" class="form-control form-control-sm" id="date" placeholder="Date" />
                 </div>
     
-                <label for="clientName">Client:</label>
-                <input type="text" class="form-control form-control-sm mb-2 mr-sm-2" id="clientName" placeholder="Client name" />
-    
-                <label for="pNum">police:</label>
+               
                 <div class="input-group mb-2 mr-sm-2">
+                    <label for="clientName">Client:</label>
+                    <input type="text" class="form-control form-control-sm" id="clientName" placeholder="Client" />
+                </div>
+    
+               
+                <div class="input-group mb-2 mr-sm-2">
+                    <label for="pNum">police:</label>
                     <input type="text" class="form-control form-control-sm" id="pNum" placeholder="police number" />
                 </div>
     
-                <label for="plate">plate:</label>
+                
                 <div class="input-group mb-2 mr-sm-2">
-                    <input type="text" class="form-control form-control-sm" id="plate" placeholder="licence plate"  max="5" />
+                    <label for="plate">matricule:</label>
+                    <input type="text" class="form-control form-control-sm" id="plate" placeholder="matricule"  max="5" />
                 </div>
     
-                <label for="duration">duration: </label>
+              
                 <div class="input-group mb-2 mr-sm-2">
-                    <input type="number" class="form-control form-control-sm" id="duration" placeholder="duration" />
+                    <label for="duration">durée: </label>
+                    <input type="number" class="form-control form-control-sm" id="duration" placeholder="durée" />
                 </div>
     
-                <label for="price">price:</label>
+                
                 <div class="input-group mb-2 mr-sm-2">
-                    <input type="number" class="form-control form-control-sm" id="price" placeholder="price" />
+                    <label for="price">prix:</label>
+                    <input type="number" class="form-control form-control-sm" id="price" placeholder="prix" />
                 </div>
                 
                 
-                <label for="credit">credit:</label>
+                
                 <div class="input-group mb-2 mr-sm-2">
+                    <label for="credit">credit:</label>
                     <input type="number" class="form-control form-control-sm" id="credit" placeholder="credit" />
                 </div>
              
@@ -75,7 +88,7 @@
                 </div>
                 
                 
-                <button id="add" class="btn btn-sm btn-primary mb-2">Add</button>
+                <button id="add" class="btn btn-sm btn-primary mb-2">Ajouter</button>
             </div>
         </div>
         
@@ -88,6 +101,10 @@
             </form>-->
            
 
+           
+        
+<!-- 
+    
             <div class="form-inline my-2 my-lg-0 search-container">
                 <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="search-input">
                 <span class="input-group-append">
@@ -96,27 +113,133 @@
                     </button>
                 </span>
             </div>
-           
-        
-
-            <table id="table" class=" table  table-striped table-bordered table-hover table-sm">
+            
+    <table  id="table" class=" table  table-striped table-bordered table-hover table-sm">
                 <thead class="thead-dark">
                     <tr>
+                        
                         <th scope="col">Date</th>
                         <th scope="col">Client</th>
                         <th scope="col">police </th>
-                        <th scope="col">plate</th>
+                        <th scope="col">matricule</th>
                         <th scope="col">expiration</th>
-                        <th scope="col">price</th>
+                        <th scope="col">prix</th>
                         <th scope="col">credit</th>
                         <th scope="col">note</th>
+                        
                     </tr>
                 </thead>
 
+                <tbody id="tbody"></tbody>
                 
-            </table>
+            </table>-->
+            
         </div>
 
+
+        <div class="container table-responsive saved">
+            <div class="fixed-table-toolbar">
+                <div class="bs-bars float-left">
+                    <div id="toolbar">
+                        <button id="remove" class="btn btn-danger" disabled=""><i class="fa fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="columns columns-right btn-group float-right">
+                    <button class="btn btn-secondary" type="button" name="paginationSwitch" aria-label="Hide/Show pagination" title="Hide/Show pagination"><i class="fa fa-caret-square-down"></i></button>
+                    <button class="btn btn-secondary" type="button" name="refresh" aria-label="Refresh" title="Refresh"><i class="fa fa-sync"></i></button>
+                    <button class="btn btn-secondary" type="button" name="toggle" aria-label="Show card view" title="Show card view"><i class="fa fa-toggle-off"></i></button>
+                    <button class="btn btn-secondary" type="button" name="fullscreen" aria-label="Fullscreen" title="Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+                    <div class="keep-open btn-group" title="Columns">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-label="Columns" title="Columns">
+                            <i class="fa fa-th-list"></i>
+          
+                            <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" class="toggle-all" checked="checked"> <span>Toggle all</span></label>
+                            <div class="dropdown-divider"></div>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-id" data-field="id" value="1" checked="checked"> <span>ID</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-name" data-field="name" value="2" checked="checked"> <span>Client</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-police" data-field="police" value="3" checked="checked"> <span>Police</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-plate" data-field="plate" value="4" checked="checked"> <span>Plate</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-end" data-field="expiration" value="5" checked="checked"> <span>Expiration</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-price" data-field="Price" value="6" checked="checked"> <span>Price</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-credit" data-field="Credit" value="7" checked="checked"> <span>Credit</span></label>
+                            <label class="dropdown-item dropdown-item-marker"><input type="checkbox" id="toggle-note" data-field="Note" value="8" checked="checked"> <span>Note</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-right search btn-group">
+                    <input id="search-input" class="form-control search-input" type="search" placeholder="Search" autocomplete="off">
+                </div>
+            </div>
+              
+            
+          <table id="table" class=" big-t table table-hover table-bordered">
+                        <thead class="">
+                            <tr>
+                                
+                                <th class="bs-checkbox" style="text-align: center; vertical-align: middle; width: 36px;" rowspan="2" data-field="state">
+                                    <div class="th-inner">
+                                        <label><input id="selectAll" name="btSelectAll" type="checkbox"><span></span></label>
+                                    </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                               
+                                <th style="text-align: center;" colspan="9">
+                                    <div class="th-inner">Client Detail</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                            <tr id="theads">
+                              <th style="text-align: center;" data-field="name" data-not-first-th="">
+                                  <div class="th-inner sortable both">Id</div>
+                                  <div class="fht-cell"></div>
+                              </th>
+                              <th  class="date"  style="text-align: center;" data-field="date" data-not-first-th="">
+                                <div class="th-inner sortable both">Date</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                                <th  class="cName"  style="text-align: center;" data-field="name" data-not-first-th="">
+                                    <div class="th-inner sortable both">Client</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="police">
+                                    <div class="th-inner sortable both">Police</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="plate">
+                                    <div class="th-inner">Plate</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="expiration">
+                                    <div class="th-inner sortable both">Expiration</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="Price">
+                                    <div class="th-inner sortable both">Price</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="Credit">
+                                    <div class="th-inner sortable both">Credit</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center;" data-field="Note">
+                                    <div class="th-inner sortable both">Note</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <!--   <tr class="no-records-found">
+                                <td colspan="10">No matching records found</td>
+                            </tr>-->
+                         
+                            
+                        </tbody>
+                        
+                    </table></div>
+<!--
         <div class="container table-responsive saved">
             <table id="table" class="table table-saved table-striped table-bordered table-hover table-sm">
                 <thead class="thead-dark">
@@ -124,22 +247,34 @@
                         <th scope="col">Date</th>
                         <th scope="col">Client</th>
                         <th scope="col">police </th>
-                        <th scope="col">plate</th>
+                        <th scope="col">matricule</th>
                         <th scope="col">expiration</th>
-                        <th scope="col">price</th>
+                        <th scope="col">prix</th>
                         <th scope="col">credit</th>
                         <th scope="col">note</th>
                     </tr>
                 </thead>
 
-                <tbody id="tbody">
-                    <tr class="trow2">
-
-                    </tr>
+                <tbody id="saved-tbody">
+                   
                 </tbody>
                 
             </table>
         </div>
+    -->
+<!--
+ <div class="select">
+            <select class="form-control" id="locale">
+              <option value="ar-SA">ar-SA</option>
+              <option value="en-US" selected>en-US</option>
+              <option value="es-AR">es-AR</option>
+              <option value="fr-FR">fr-FR</option>
+              
+            </select>
+          </div>
+          
+-->
+       
 
 
 <!-- <div class="container-sm" id="editTable">
@@ -235,9 +370,13 @@
 
         
         -->
+        
+        <script src="/lib/moment.min.js"></script>
         <script src="js/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        <script src="js\bootstrap.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
+        <!-- <script src="js/bt.js"></script>-->
+       
     </body>
 </html>

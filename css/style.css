@@ -1,3 +1,6 @@
+body {
+    background-color: #00028bcc;
+}
 .form {
     background-color:#ecd269;
    
@@ -11,6 +14,7 @@
 
 .form-inline {
     justify-content: center;
+    margin-left: -4px;
 }
 
 
@@ -30,9 +34,6 @@
 #add {
     margin: 10px;
 }
-
-
-
 
 
 #note {
@@ -78,12 +79,6 @@
 .bg {
     background-color: #ad9a9a;
 }
-@media screen and (min-width: 720px) {
-    #editTable {
-        max-width: 50%;
-    }
-}
-
 
 .editBtn{
 	padding: .13rem .8rem;
@@ -135,4 +130,56 @@
 
 .search-container button:hover {
    color: #72afe4;
+}
+
+.mr-sm-2 {
+    margin-right: unset !important;
+    align-items: baseline;
+
+}
+
+.form-control-sm {
+    margin-right: 10px;
+}
+
+@media screen and (max-width:576px) {
+    label {
+        text-align: center !important;
+    }
+    .mb-2 {
+        flex-flow: column wrap !important;
+    }
+
+    .input-group > .form-control {
+        width: 100%;
+    }
+
+    .form {
+        height: 42vh;
+        overflow: scroll;
+    }
+    
+}
+
+@media screen and (min-width: 720px) {
+    #editTable {
+        max-width: 50%;
+    }
+}
+
+.table thead {
+    background-color: #18222b;
+    color: white
+}
+
+.big-t td {
+    background-color:#f2f2f2;
+}
+
+.no-records-found {
+    display:none;
+}
+
+.saved {
+    margin-top: 15px;
 }

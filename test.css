@@ -42,3 +42,13 @@
         max-width: 50%;
     }
 }
+
+.no-records-found {
+    display:none;
+    text-align: center;
+    background-color: #9890e9;
+}
+
+.keep-open:hover .dropdown-menu {
+    display: block;
+}

@@ -1,0 +1,65 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Javascript Local Storage</title>
+
+<style>
+input{
+padding:8px;
+height:40px;
+}
+fieldset{
+margin-bottom:30px;}
+</style>
+</head>
+<body>
+<h2>Javascript Local Storage</h2>
+
+<fieldset>
+<legend>Insert Data</legend>
+<input type="text" id="key" placeholder="Enter Key..." value="a">
+<input type="text" id="value" placeholder="Enter Value..." value="1">
+<button type="button" id="btn">Insert Data</button>
+
+</fieldset>
+
+<fieldset>
+<legend>Fetach Local Storage Data:</legend>
+<div id="output">
+
+a : 1<br><br></div>
+</fieldset>
+
+
+<script>
+
+const keyinp=document.getElementById("key");
+const valueinp=document.getElementById("value");
+const btninp=document.getElementById("btn");
+const outputinp=document.getElementById("output");
+
+btninp.onclick=function(){
+
+const key=keyinp.value;
+const value=valueinp.value;
+
+console.log(key);
+if(key&&value)
+{
+
+	localStorage.setItem(key,value);
+	location.reload();
+	
+
+}
+
+}
+
+for(let k=0;k<localStorage.length;k++)
+{
+const key=localStorage.key(k);
+const value=localStorage.getItem(key);
+outputinp.innerHTML +=key+" : "+value+"<br /><br />";
+
+}
+</script>
+</body></html>
