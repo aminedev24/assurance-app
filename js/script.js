@@ -482,8 +482,10 @@ function selectIds(){
         
        })
        
+       if(selectedArr.length !=0){
+        btnRemove.removeAttribute("disabled")
+       }
        
-       btnRemove.removeAttribute("disabled")
         break;
       default:
         console.log(selectedArr.length)
