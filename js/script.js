@@ -269,10 +269,13 @@ btn.onclick = (e)=>{
       diff = endDate - startDate
       let msInDay = 1000 * 3600 * 24; 
 
-      console.log(startDate)
+      console.log(diff/msInDay)
 
-      d2 = new Date( endDate.setDate(endDate.getDate() +Number(diff/msInDay)))
-      console.log(d2)
+      d2 = new Date()
+      
+      
+      
+      
       
     }
     
@@ -457,7 +460,7 @@ select.forEach((el)=>{
         e.currentTarget.checked = false;
         //delete selectedArr[selectedArr.indexOf(e.currentTarget)]
         selectedArr.splice(selectedArr.indexOf(e.currentTarget),1)
-        if(!selectAll.checked && selectedArr.length ==1){
+        if(!selectAll.checked && selectedArr.length ==0){
           btnRemove.setAttribute('disabled','disabled') 
         }
         if(selectAll.checked && selectedArr.length ==0){

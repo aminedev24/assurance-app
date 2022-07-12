@@ -134,7 +134,7 @@ body {
 
 .mr-sm-2 {
     margin-right: unset !important;
-    align-items: baseline;
+    align-items: baseline !important;
 
 }
 
@@ -151,12 +151,16 @@ body {
     }
 
     .input-group > .form-control {
-        width: 100%;
+        width: 100% !important;
     }
 
     .form {
         height: 42vh;
         overflow: scroll;
+    }
+
+    .mr-sm-2 {
+        align-items: center !important;
     }
     
 }
@@ -182,4 +186,20 @@ body {
 
 .saved {
     margin-top: 15px;
+}
+
+.search, .columns {
+    display: none !important;
+}
+
+#table_filter {
+    margin: -15px 0;
+}
+
+#table_filter  label{
+    text-align: center;
+}
+
+#table_length {
+    margin: 15px 0;
 }
