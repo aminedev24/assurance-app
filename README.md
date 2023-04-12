@@ -1,7 +1,2 @@
-# assurance-app
- 
-this is from demo3a from local to github repo.
-this is an assurance web app. #updated
-
-
-this is an update from the office 3dsf14f
+This is a crud ( create read update delete) app made with 
+HTML CSS and JavaScript it helps users to add information about their clients
